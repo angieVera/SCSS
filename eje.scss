@@ -1,0 +1,102 @@
+/*
+
+
+
+Nesting -> jerarquía de tres niveles
+mixing, extend, operadores, variables.
+
+*/
+
+$color-principal:pink;
+$color-secundario: blue;
+$color-complementario: green;
+$color-terciario: purple;
+$unidad-medida: 40px;
+
+div {
+    background-color: $color-principal;
+}
+
+button {
+    text-shadow: 1px 1px $color-secundario;
+}
+
+* {
+    font-size: $unidad-medida;
+}
+
+
+nav {
+    li {
+        background: #ffe5e5;
+        padding: 5px;
+        margin-left: 35px;
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    }
+}
+
+
+%aspecto {
+    border: 10px solid #cccc11;
+    padding: 10px;
+    color: #333;
+}
+
+.seccion {
+    @extend %aspecto;
+}
+
+.division {
+    @extend %aspecto;
+
+}
+
+
+
+@mixin titulos ($fsize){
+    font-family: Georgia, serif;
+    font-size: $fsize;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.seccion > h1{
+    @include titulos(50px);
+    
+    color: $color-terciario;
+    text-align: center;
+
+}
+
+.seccion2 > h2 {
+    @include titulos(18px);
+   color: $color-complementario;
+   text-align: center;
+}
+
+.division > h3 {
+    @include titulos(30px);
+    color: red;
+}
+
+.division > p{
+    font-style: oblique;
+    @include titulos(10px);
+}
+
+
+
+ .seccion2 button{
+    position: relative;
+    float: right;
+    width: 300px / 960px * 100%;
+  }
+
+.seccion2 p{
+    text-align: center;
+}
